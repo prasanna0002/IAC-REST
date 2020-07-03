@@ -32,5 +32,18 @@ jobs:
  
         name: javacode
         path: target/*.jar
- 
-       
+     
+    - uses: actions/checkout@v1
+    - name: Download Maven build artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: artifact
+    - name: Build Docker container
+      run: |
+        mkdir -p github-actions-java-maven/target
+        mv artifact/*.jar github-actions-java-maven/target
+        docker build -t prasanna002/maven .
+      
+    - run: docker login -u ${{ secrets.DOCKER_USER }} 
+             -p ${{ secrets.DOCKER_PASS }}
+    - run: docker push prasanna002/maven:latest
