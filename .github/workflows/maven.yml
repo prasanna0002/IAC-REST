@@ -30,6 +30,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: Java_build
-        path: target/iac-rest-service-0.0.1-SNAPSHOT.jar
+        path: ./target/iac-rest-service-0.0.1-SNAPSHOT.jar
  
        
