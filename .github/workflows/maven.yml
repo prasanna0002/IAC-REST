@@ -24,7 +24,7 @@ jobs:
       run: mvn -B package -DskipTests --file pom.xml
       
     - name: copy jar file
-      run: mkdir staging && cp target/*.jar staging
+      run: mkdir staging && cp target/*.jar staging && ls staging
       
     - name: Download a Build Artifact
       uses: actions/download-artifact@v2
