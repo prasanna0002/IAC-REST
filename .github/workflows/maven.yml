@@ -27,4 +27,4 @@ jobs:
       with:
          name: Java_build
          # Destination path
-         path: src
+       
