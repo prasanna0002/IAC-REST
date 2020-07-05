@@ -40,4 +40,4 @@ jobs:
       
     - name: deploy  to ECS
       run: chmod 777 deployment.sh
-      run: ./deployment.sh
+    -  run: ./deployment.sh
