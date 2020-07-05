@@ -32,11 +32,11 @@ jobs:
         path: target/*.jar
      
     - name: Build Docker container
-      run: docker build -t prasanna002/maven:${{ GITHUB_RUN_NUMBER }} .
+      run: docker build -t prasanna002/maven:$GITHUB_RUN_NUMBER .
       
     - run: docker login -u ${{ secrets.DOCKER_USER }} 
              -p ${{ secrets.DOCKER_PASS }}
-    - run: docker push prasanna002/maven:${{ GITHUB_RUN_NUMBER }}
+    - run: docker push prasanna002/maven:$GITHUB_RUN_NUMBER
       
     - name: deploy  to ECS
       run: ./deployment.sh
