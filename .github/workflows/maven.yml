@@ -39,4 +39,5 @@ jobs:
     - run: docker push prasanna002/maven:$GITHUB_RUN_NUMBER
       
     - name: deploy  to ECS
+      run: chmod 777 deployment.sh
       run: ./deployment.sh
