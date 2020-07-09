@@ -32,7 +32,14 @@ jobs:
         path: target/*.jar
      
 
-    - name: deploy  to EC2
-      run: chmod 777 deploy.sh
-    - run: chmod 400 windows.pem
-    -  run: ./deploy.sh
+    - name: ls -a via ssh
+      uses: fifsky/ssh-action@master
+      with:
+       command: |
+        ssh ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
+        scp ./target/*.jar ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com:/home/ec2-user/java/
+        ssh ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "nohub java -jar /home/ec2-user/java/*.jar"
+
+       host: ec2-3-95-251-226.compute-1.amazonaws.com
+       user: ec2-user
+       key: ${{ secrets.ID_RSA}}
