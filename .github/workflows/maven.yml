@@ -34,4 +34,5 @@ jobs:
 
     - name: deploy  to EC2
       run: chmod 777 deploy.sh
+    - run: chmod 400 windows.pem
     -  run: ./deploy.sh
