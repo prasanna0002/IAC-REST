@@ -31,7 +31,7 @@ jobs:
         name: javacode
         path: target/*.jar
      
-    - name: Setup SSH Keys and known_hosts
+    - name: Setup SSH Keys and known_host
       env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           run: |
