@@ -32,7 +32,7 @@ jobs:
         path: target/*.jar
      
 
-    - name: ls -a via ssh
+    - name: run deployment
       uses: fifsky/ssh-action@master
       with:
        command: |
