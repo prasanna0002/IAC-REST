@@ -1,5 +1,5 @@
 #!/bin/bash
 
-ssh -i ./windows.pem ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
-scp -i ./windows.pem ./target/*.jar ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com:/home/ec2-user/java/
-ssh -i ./windows.pem ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "nohub java -jar /home/ec2-user/java/*.jar"
+rm -f /home/ec2-user/java/*.jar
+#wget -o /home/ec2-user/java/ https://github.com/prasanna0002/IAC-REST/suites/896940236/artifacts/10713269 
+#nohup java -jar /home/ec2-user/java/*.jar &
