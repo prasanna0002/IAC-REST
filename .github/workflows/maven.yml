@@ -24,15 +24,12 @@ jobs:
       run: mvn -B package -DskipTests --file pom.xml
   
   
-
-
-    - name: run deployment only build
+    - name: Deploy to nerdhood.de
       uses: appleboy/ssh-action@master
-      with:
-       command: |
-        ssh ec2-user@ec2-3-95-240-252.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
-        
+      env:
+        USERNAME: ec2-user
+        HOST: ec2-3-95-251-226.compute-1.amazonaws.com
+        SCRIPT: ~/deploy.sh
+        KEY: ${{ secrets.ID_RSA} }}
 
-       host: ec2-3-95-251-226.compute-1.amazonaws.com
-       user: ec2-user
-       key: ${{ secrets.ID_RSA}}
+
