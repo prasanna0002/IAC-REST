@@ -41,7 +41,8 @@ jobs:
        S3_BUCKET: functionbeat-deploy-2020today
        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-    - name: Deploy to nerd
+    
+    - name: Deploy to 
       uses: appleboy/ssh-action@master
       env:
         USERNAME: ec2-user
