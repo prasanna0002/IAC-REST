@@ -29,9 +29,33 @@ jobs:
       with:
  
         name: javacode
-        path: target/*.jar
+        path: tar
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/download-artifact@master
+      - name: Copy file via scp
+        uses: appleboy/scp-action@master
+        env:
+         HOST: ec2-34-229-232-99.compute-1.amazonaws.com
+         USERNAME: ec2-user
+         PORT: 22
+         KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+        with:
+         source: "/home/runner/work/IAC-REST/IAC-REST/javacode/github/workspace/javacode/"
+         target: "/home/ec2-user/cicd/"
+      - name: Executing remote  command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ec2-34-229-232-99.compute-1.amazonaws.com
+          USERNAME: ec2-user
+          PORT: 22
+          KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+          script: nohup java -jar /home/ec2-user/cicd/*.jar &
   
    
    
-    - uses: actions/download-artifact@master
   
