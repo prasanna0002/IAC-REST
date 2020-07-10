@@ -30,6 +30,6 @@ jobs:
         USERNAME: ec2-user
         HOST: ec2-3-95-251-226.compute-1.amazonaws.com
         SCRIPT: ~/deploy.sh
-        KEY: ${{ secrets.ID_RSA} }}
+        KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
 
 
