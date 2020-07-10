@@ -30,7 +30,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
        command: |
-        ssh ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
+        ssh ec2-user@ec2-3-95-240-252.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
         
 
        host: ec2-3-95-251-226.compute-1.amazonaws.com
