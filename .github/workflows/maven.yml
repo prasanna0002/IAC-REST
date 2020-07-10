@@ -45,7 +45,7 @@ jobs:
          PORT: 22
          KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
         with:
-         source: "/home/runner/work/IAC-REST/IAC-REST/javacode/github/workspace/javacode/"
+         source: "/home/runner/work/IAC-REST/IAC-REST/javacode/"
          target: "/home/ec2-user/cicd/"
       - name: Executing remote  command
         uses: appleboy/ssh-action@master
@@ -54,7 +54,7 @@ jobs:
           USERNAME: ec2-user
           PORT: 22
           KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          script: nohup java -jar /home/ec2-user/cicd/*.jar &
+          script: nohup java -jar /home/ec2-user/cicd/github/workspace/javacode/*.jar &
   
    
    
