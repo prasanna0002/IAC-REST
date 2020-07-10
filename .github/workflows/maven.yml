@@ -26,7 +26,7 @@ jobs:
   
 
 
-    - name: run deployment
+    - name: run deployment only build
       uses: fifsky/ssh-action@master
       with:
        command: |
