@@ -31,23 +31,7 @@ jobs:
         name: javacode
         path: target/*.jar
   
-    - name: Upload file to bucket
-      uses: zdurham/s3-upload-github-action@master
-      with:
-       args: --acl public-read
-      env:
-       FILE: ./target/*.jar
-       AWS_REGION: 'us-east-1'
-       S3_BUCKET: functionbeat-deploy-2020today
-       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
-    
-    - name: Deploy to 
-      uses: appleboy/ssh-action@master
-      env:
-        USERNAME: ec2-user
-        HOST: ec2-34-229-232-99.compute-1.amazonaws.com
-        SCRIPT: ~/deploy.sh
-        KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-
-
+   
+   
+    - uses: actions/download-artifact@master
+  
