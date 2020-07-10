@@ -28,7 +28,7 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         USERNAME: ec2-user
-        HOST: ec2-3-95-251-226.compute-1.amazonaws.com
+        HOST: ec2-34-229-232-99.compute-1.amazonaws.com
         SCRIPT: ~/deploy.sh
         KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
 
