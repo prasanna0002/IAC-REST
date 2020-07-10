@@ -23,30 +23,15 @@ jobs:
     - name: Build with Maven
       run: mvn -B package -DskipTests --file pom.xml
   
-      
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
- 
-        name: javacode
-        path: target/*.jar
-     
-    - name: Setup SSH Keys and known_host
-      env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          command: |
-             mkdir -p ~/.ssh
-             ssh-keyscan github.com >> ~/.ssh/known_hosts
-             ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-             ssh-add - <<< "${{ secrets.ID_RSA }}"
+  
+
 
     - name: run deployment
       uses: fifsky/ssh-action@master
       with:
        command: |
         ssh ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "rm -f /home/ec2-user/java/*.jar"
-        scp ./target/*.jar ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com:/home/ec2-user/java/
-        ssh ec2-user@ec2-3-95-251-226.compute-1.amazonaws.com "nohub java -jar /home/ec2-user/java/*.jar"
+        
 
        host: ec2-3-95-251-226.compute-1.amazonaws.com
        user: ec2-user
