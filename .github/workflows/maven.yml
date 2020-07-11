@@ -42,7 +42,7 @@ jobs:
           USERNAME: ec2-user
           PORT: 22
           KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          script: rm -Rf /home/ec2-user/cicd && ps -ex | grep java | grep -v grep | awk '{print $2}' | xargs kill 2>/dev/null 
+          script: ps -ex | grep java | grep -v grep | awk '{print $2}' | xargs kill 2>/dev/null 
       
       - uses: actions/download-artifact@master
       - name: Copy file via scp
