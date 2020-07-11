@@ -44,7 +44,7 @@ jobs:
           USERNAME: ec2-user
           PORT: 22
           KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          script: ps -ef | grep java | grep -v grep | awk '{print $2}' | xargs kill 2>/dev/null
+          script: set +e && ps -ef | grep java | grep -v grep | awk '{print $2}' | xargs kill 2>/dev/null
       - uses: actions/download-artifact@master
       - name: Copy file via scp
         uses: appleboy/scp-action@master
