@@ -23,7 +23,13 @@ jobs:
     - name: Build with Maven
       run: mvn -B clean package -DskipTests --file pom.xml
     
-       
+           
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+ 
+        name: javacode
+        path: target
   deploy:
     needs: build
     runs-on: ubuntu-latest
