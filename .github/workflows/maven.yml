@@ -23,28 +23,14 @@ jobs:
     - name: Build with Maven
       run: mvn -B clean package -DskipTests --file pom.xml
     
-          
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2
-      with:
- 
-        name: javacode
-        path: target
-        
+       
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
     
-      - name: Executing remote  command
-        uses: appleboy/ssh-action@master
-        with:
-          host: ec2-3-88-18-101.compute-1.amazonaws.com
-          USERNAME: ec2-user
-          PORT: 22
-          KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          script: set +e && ps -ef | grep java | grep -v grep | awk '{print $2}' | xargs kill 2>/dev/null
+      
       - uses: actions/download-artifact@master
       - name: Copy file via scp
         uses: appleboy/scp-action@master
